@@ -11,7 +11,7 @@ $(document).ready(function () {
         hour.attr("id", "hour");
         task.attr({id: "task", type:"text", data: "e"+i});
         task.val(localStorage.getItem("e"+i))
-        save.attr({type: "button", id: "save"});
+        save.attr({type: "button", id: "save", data: "e"+i});
         save.text("Save");
         if(i >= 12){
             if (i === 12){
@@ -30,5 +30,13 @@ $(document).ready(function () {
         // $(newRow).append(save);
         };
         i++
+    }
+    $(document).on("click", "#save", saveTask);
+    function saveTask(){
+        var data = $(this).attr("data");
+        var task = $("input[data="+data+"]").val();
+        console.log(data);
+        console.log(task);
+        localStorage.setItem(data, task);
     }
 });
