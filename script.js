@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     load();
     function load() {
-        localStorage.setItem("e10", "do things");
+        // localStorage.setItem("e10", "do things");
         var date = $("<div>").text(moment().format('dddd Do MMMM'));
         date.addClass("display-5 time")
         $(".display-5").append(date);
@@ -61,6 +61,13 @@ $(document).ready(function () {
         console.log(moment().format('h'));
         // i++
     }
+
+    $("#reset").on("click", function(){
+        for (i = 9; i < 18; i++) {
+            localStorage.removeItem("e" + i);
+            location.reload();
+        }
+        })
 
     $(document).on("click", "#save", saveTask);
 
